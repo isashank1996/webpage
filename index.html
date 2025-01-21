@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project-2</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            height: 100vh;
+        }
+        #Question {
+            margin-right: 30px;
+            
+            
+        }
+        button {
+            display: inline-flex;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: whitesmoke;
+            font-style: italic;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background-color: goldenrod;
+        }
+        h3 {
+            margin-bottom: 20px;
+        }
+        button :disabled {
+            display: none;
+        }
+        #messageDiv {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+    </style>
+    </head>
+    <body>
+        <div id = "Question">
+            <h3> Are We Best Priends ? </h3>
+        </div>
+        <div>
+            <button class = "Yes" id = "Yes" type = "button" align = "center">Yes</button>
+            <button class = "No" id = "No" type = "button">No</button>
+        </div>
+        <div id = "messageDiv"> </div>
+        <script>
+            const yesbutton = document.getElementsByClassName("Yes")[0]
+            const nobutton = document.getElementsByClassName("No")[0]
+            const messages = [
+                "Manam Priends Kada",
+                 "I'll cook pappu for you", 
+                 "Lets's go to trader Joes",
+                 "Please Priend",
+                 "I'm your best Priend, Sowndarya",
+                 "I'm your only Priend",
+                 "Okay, You are my only Priend",
+                 "Fine, Last time asking",
+                 "Last Chance",
+                 "I'm going",
+                 "No way you can do this sowndarya"
+                ]
+            const backgroundcolors = ["#FFA500", "#FF8C00", "#FF7F50", "#FF6347", "#F28500", "#FFDAB9", "#FBCEB1"];
+            let clickCount = 0;
+            const maxCycle = 10;
+
+            yesbutton.addEventListener("click", () =>
+        {       
+                yesbutton.remove();
+                nobutton.remove();
+                document.getElementById("Question").remove()
+
+                messageDiv.textContent = "We are Best Priends";
+                document.body.style.backgroundColor = "GreenYellow"
+        });
+
+            nobutton.addEventListener("click", () => {
+                if (clickCount < maxCycle) {
+                    clickCount ++;
+                    document.body.style.backgroundColor = backgroundcolors[clickCount]
+                    nobutton.textContent  = messages[clickCount]
+                    yesbutton.style.fontSize = `${30 + clickCount * 15}px`;
+                }
+                else {
+                    document.getElementById("No").remove();
+                }
+                
+            });
+        </script>
+        
+    </body>
+    
+</html>
